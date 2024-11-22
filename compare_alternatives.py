@@ -9,6 +9,7 @@ from jaxtyping import Array
 import tyro
 
 from mwe import get_matrices
+from jax_multidot import multi_dot as numpy_port_multi_dot
 
 SEED = 0 # for matrix entries
 
@@ -68,6 +69,9 @@ def main(num: int, width: int, seed: int = SEED, mode: Literal['fixed_width', 'r
 
     first_jitted_time, second_jitted_time, not_jitted_time = profile(reduce_dot, xs)
     print(f"reduce_dot:\n\t{first_jitted_time=}\n\t{second_jitted_time=}\n\t{not_jitted_time=}")
+
+    first_jitted_time, second_jitted_time, not_jitted_time = profile(numpy_port_multi_dot, xs)
+    print(f"numpy_port_multi_dot:\n\t{first_jitted_time=}\n\t{second_jitted_time=}\n\t{not_jitted_time=}")
 
     first_jitted_time, second_jitted_time, not_jitted_time = profile(multi_dot, xs)
     print(f"multi_dot:\n\t{first_jitted_time=}\n\t{second_jitted_time=}\n\t{not_jitted_time=}")
