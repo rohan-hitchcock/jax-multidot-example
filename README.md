@@ -5,3 +5,5 @@ Components:
 - `plot_performance.py`: Plots the performance of numpy vs jax.
 - `jax_multidot.py`: A jittable version of `multi_dot` for `jax`, basically copied from `numpy.linalg.multi_dot`.
 - `compare_alternatives.py`: Compares various options for doing `multi_dot` in jax.
+
+See https://github.com/jax-ml/jax/issues/25051
